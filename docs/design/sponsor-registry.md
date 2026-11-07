@@ -1,7 +1,7 @@
 # A sponsor registry
 
 If you're contributing, this is a proposal for a `sponsor` registry in the standard library. The schema is
-[`packages/sdk/std/registries/sponsor/1.0.json`](https://github.com/Swofty-Developments/SwoftyLauncher/blob/main/packages/sdk/std/registries/sponsor/1.0.json), status
+[`packages/sdk/std/proposals/sponsor/1.0.json`](https://github.com/Swofty-Developments/SwoftyLauncher/blob/main/packages/sdk/std/proposals/sponsor/1.0.json), status
 experimental. Nothing here is built into the core yet. Everything it describes already runs in a community addon
 (Sponsor Studio and its Sponsor Base by JonnieDesigns), so the proposal is about moving known-good behaviour into
 the core, not about new research.
