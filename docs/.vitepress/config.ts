@@ -516,6 +516,7 @@ export default defineConfigWithTheme<DocsThemeConfig>({
                   { text: "Liveries (build operations)", link: "/reference/data/livery", icon: "file" },
                   { text: "In-game text", link: "/reference/data/text", icon: "file" },
                   { text: "A track with its own name", link: "/reference/data/track-names", icon: "file" },
+                  { text: "Adding a sponsor", link: "/reference/data/sponsors", icon: "file" },
                   { text: "File operations", link: "/reference/ops/files", icon: "file" },
                   { text: "UI patches", link: "/reference/ops/ui-patches", icon: "file" },
                   { text: "Asset op files", link: "/reference/addons/asset-api", icon: "file" },

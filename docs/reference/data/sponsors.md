@@ -80,7 +80,7 @@ The modifier table, `career.department_events.DepartmentEvents_2.outcome_modifie
 
 A `set` writes the whole list. If two addons do this, the one that loads last silently removes the other's starting sponsors, and they stay locked in every new career. That's what happened to the engine-supplier sponsors of one addon when a sticker addon also set the list.
 
-The game applies this list **only when a career is created**. A sponsor added to it later stays locked in careers that already exist. Data can't change that, because the discovery is stored in the career save. See [sponsors.md in re/](../../../re/research/sponsors.md#discover) for the game's discover routine, which a native plugin can call at career load.
+The game applies this list **only when a career is created**. A sponsor added to it later stays locked in careers that already exist. Data can't change that. The discovery is stored in the career save. See [sponsors.md in re/](https://github.com/Swofty-Developments/SwoftyLauncher/blob/main/re/research/sponsors.md#discover) for the game's discover routine, which a native plugin can call at career load.
 
 ## The textures
 
@@ -131,13 +131,13 @@ Every row above carries an id (`statId`, `id`, `sponsor_id`). Saved liveries sto
 - **Never change an id once the addon is in use**, or placed decals turn into other decals in saved careers.
 - Unlock-item `statId`s must be unique within each unlock list (`unlockable_item_list_<n>`, across all its folders), not just within one folder.
 
-Until the launcher allocates these ids, keep each addon's ids fixed once it ships, and pick new ones that avoid both the game's ids and those of every installed addon. The [sponsor registry proposal](../../design/sponsor-registry.md) moves that job into the core.
+Until the launcher allocates these ids, keep each addon's ids fixed once it ships, and pick new ones that avoid both the game's ids and those of every installed addon. The [sponsor registry proposal](/design/sponsor-registry) moves that job into the core.
 
 ## Clone every field
 
 The launcher's key catalogue doesn't know the row shapes of `unlockable_decal_group` and `secondary_sponsor` (the nested loyalty track). With `"copy": "all"`, list the fields of each cloned table in the op file's `fields` object, taken from the stock row. The build then copies them and reports the shape warnings as notes.
 
-Some stock rows also carry numbered fields that the catalogue can't name at all, because only their hash is in the database. A `DepartmentEvent` `Outcome` row, for example, has `outcome_modifier_1` … `outcome_modifier_3`. Find them by hashing `<row>.<field><n>` against the database, and copy them too ([pitfalls](#pitfalls-that-crash-the-game)).
+Some stock rows also carry numbered fields that the catalogue can't name at all. Only their hash is in the database. A `DepartmentEvent` `Outcome` row, for example, has `outcome_modifier_1` … `outcome_modifier_3`. Find them by hashing `<row>.<field><n>` against the database, and copy them too ([pitfalls](#pitfalls-that-crash-the-game)).
 
 ## Pitfalls that crash the game
 
@@ -157,5 +157,5 @@ All three were seen in game.
 ## Reference
 
 - Sponsor Studio (the tool these exports come from): source and releases by JonnieDesigns.
-- The engine side (what the catalogue, editor and career code do with these rows): [`re/research/sponsors.md`](../../../re/research/sponsors.md).
+- The engine side (what the catalogue, editor and career code do with these rows): [`re/research/sponsors.md`](https://github.com/Swofty-Developments/SwoftyLauncher/blob/main/re/research/sponsors.md).
 - [Database operations](./database), [ERP operations](/reference/ops/erp), [In-game text](./text).

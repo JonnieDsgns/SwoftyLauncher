@@ -1,7 +1,7 @@
 # A sponsor registry
 
 If you're contributing, this is a proposal for a `sponsor` registry in the standard library. The schema is
-[`packages/sdk/std/registries/sponsor/1.0.json`](../../packages/sdk/std/registries/sponsor/1.0.json), status
+[`packages/sdk/std/registries/sponsor/1.0.json`](https://github.com/Swofty-Developments/SwoftyLauncher/blob/main/packages/sdk/std/registries/sponsor/1.0.json), status
 experimental. Nothing here is built into the core yet. Everything it describes already runs in a community addon
 (Sponsor Studio and its Sponsor Base by JonnieDesigns), so the proposal is about moving known-good behaviour into
 the core, not about new research.
@@ -9,8 +9,8 @@ the core, not about new research.
 ## Why the core should own sponsors
 
 Adding a sponsor today means about 20 database operations, 2 textures per decal design, a texture registry
-patch in several archives and a shader-archive overlay ([Adding a sponsor](../reference/data/sponsors.md)).
-Three problems can't be solved well by one addon, because they're about several addons at once:
+patch in several archives and a shader-archive overlay ([Adding a sponsor](/reference/data/sponsors)).
+Three problems involve several addons at once and can't be solved well by one:
 
 1. **Ids.** Every row carries a `statId`/`id`/`sponsor_id`, and saved liveries store `DecalSet.id`. Two addons that
    each took "highest stock id + 1" gave Pirelli and Toyota the same decal id, and the game showed one in place of
@@ -59,7 +59,7 @@ name, logo, list tile or designs without new rows, the same way `team.logo` laye
 | `emblem` | `BadgeEmblem` (cloned from `BadgeEmblem_17`), unlock rows in the lists holding a plain `BadgeEmblem_01`, `emblem_<code>` texture 512 × 512 under `customisation.cstm_badge_large.emblem` |
 | `stat_id`, design `id`, `career.sponsor_id`, `emblem.id` | allocated by the core when `"auto"`, kept per record once used |
 
-Rules the core must keep, because the game crashes or misbehaves without them (all seen in game):
+Rules the core must keep. The game crashes or misbehaves without them (all seen in game):
 
 - every decal name a row holds (loyalty `decal`, `default_decals`) names an existing design, or is empty;
 - cloned rows copy their hash-only numbered fields (`Outcome.outcome_modifier_1..3`), which the key catalogue can't
@@ -69,7 +69,7 @@ Rules the core must keep, because the game crashes or misbehaves without them (a
 ## Native part
 
 These behaviours need code in the game process. Sponsor Studio's Sponsor Base does each one today, with byte-checked
-signatures on the KB build. The engine research is in [`re/research/sponsors.md`](../../re/research/sponsors.md),
+signatures on the KB build. The engine research is in [`re/research/sponsors.md`](https://github.com/Swofty-Developments/SwoftyLauncher/blob/main/re/research/sponsors.md),
 with KB rows proposed in the same contribution. Levels follow PROTOCOL §1; none of the rows is independently
 verified (PROTOCOL §5).
 
